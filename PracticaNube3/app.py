@@ -18,8 +18,8 @@ ROLES = {
                                "y límites de peticiones, y conceptos de bots/webhooks",
 }
 
-st.set_page_config(page_title="Simulador de Entrevistas Técnicas", page_icon="💼", layout="centered")
-st.title("💼 Simulador de Entrevistas Técnicas")
+st.set_page_config(page_title="Simulador de Entrevistas Técnicas", page_icon="◘", layout="centered")
+st.title("◘ Simulador de Entrevistas Técnicas")
 st.caption("Líder Técnico Virtual • Entrevista de 3 preguntas • Sistemas Inteligentes")
 
 # ==============================================================================
@@ -92,7 +92,7 @@ def enviar(texto: str):
             if ("503" in str(e) or "UNAVAILABLE" in str(e)) and intento < 2:
                 time.sleep(2 * (intento + 1))
                 continue
-            st.error(f"❌ Error al consultar la API: {e}")
+            st.error(f"Error al consultar la API: {e}")
             return None
     return None
 
@@ -123,9 +123,9 @@ with st.sidebar:
         st.write(f"Pregunta **{actual} de {TOTAL_PREGUNTAS}**")
     else:
         st.progress(1.0)
-        st.write("✅ Entrevista finalizada")
+        st.write("☺Entrevista finalizada")
 
-    if st.button("🔄 Reiniciar Entrevista", use_container_width=True):
+    if st.button("Reiniciar Entrevista", use_container_width=True):
         nueva_entrevista(rol)
         st.rerun()
 
@@ -156,14 +156,14 @@ for m in st.session_state.messages:
 # ==============================================================================
 if st.session_state.fase == "reporte" and st.session_state.reporte:
     st.divider()
-    st.subheader("📋 Reporte Final de la Entrevista")
+    st.subheader("Reporte Final de la Entrevista")
     reporte = st.session_state.reporte
     st.markdown(reporte)
     mayus = reporte.upper()
     if "NO APROBADO" in mayus:
-        st.error("🚫 DICTAMEN: NO APROBADO")
+        st.error("DICTAMEN: NO APROBADO")
     elif "APROBADO" in mayus:
-        st.success("✅ DICTAMEN: APROBADO")
+        st.success("☺DICTAMEN: APROBADO")
 
 # ==============================================================================
 # ENTRADA DEL CANDIDATO
