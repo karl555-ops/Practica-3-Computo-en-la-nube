@@ -6,7 +6,7 @@ from google.genai import types
 # ==============================================================================
 # CONFIGURACIÓN GENERAL
 # ==============================================================================
-MODEL = "gemini-3.8-flash"   # usa el mismo modelo que te funcionó en la práctica anterior
+MODEL = "gemini-3.8-flash"
 TOTAL_PREGUNTAS = 3
 
 ROLES = {
@@ -78,7 +78,7 @@ def nueva_entrevista(rol: str):
     st.session_state.rol_activo = rol
     st.session_state.messages = []
     st.session_state.turn_count = 0          # respuestas válidas recibidas
-    st.session_state.fase = "preguntas"      # "preguntas" | "reporte"
+    st.session_state.fase = "preguntas"      # "preguntas" "reporte"
     st.session_state.reporte = None
     st.session_state.chat = crear_chat(rol)
 
@@ -111,7 +111,7 @@ def separar_etiqueta(texto: str):
 # BARRA LATERAL: selector de rol, progreso y reinicio
 # ==============================================================================
 with st.sidebar:
-    st.header("⚙️ Configuración")
+    st.header("Configuración")
     rol = st.selectbox("Rol al que postulas:", list(ROLES.keys()), key="rol_sel")
 
     if "rol_activo" not in st.session_state or st.session_state.rol_activo != rol:
